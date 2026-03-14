@@ -11,8 +11,8 @@
 
 // --- конфигурация (масштабируется через константы) ---
 namespace config {
-constexpr int dt_ms = 100;       // шаг интегрирования, мс (100 гц)
-constexpr int input_count = 5;   // входы (каналы ээг)
+constexpr int dt_ms = 200;       // шаг интегрирования, мс (5 Гц)
+constexpr int input_count = 5;   // входы (каналы)
 constexpr int hidden_count = 10; // скрытый слой
 constexpr int output_count = 2;  // выходы (классы)
 constexpr int neuron_count = input_count + hidden_count + output_count;
@@ -33,7 +33,7 @@ struct neuron
     int refractory = 0;           // остаток рефрактерного периода, мс
     bool spiked = false;          // спайк в текущем кадре
     bool spiked_prev = false;     // спайк в предыдущем кадре
-    int layer = 0;                // 0=input, 1=hidden, 2=output
+    int layer = 0;                // 0=входной, 1=скрытый, 2=выходной
     int id_in_layer = 0;          // индекс внутри слоя
     double activation_rate = 0.0; // скользящее среднее активности
 };
